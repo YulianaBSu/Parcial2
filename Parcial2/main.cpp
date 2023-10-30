@@ -1,32 +1,9 @@
 #include <iostream>
 #include <tablero.h>
 #include <jugador.h>
+#include <partida.h>
 
 using namespace std;
-
-
-
-class Partida {
-private:
-    string jugador1;
-    string jugador2;
-    string ganador;
-    int fichasganador;
-    string fecha;
-    string hora;
-
-public:
-    Partida();
-
-    void initpartida() {
-
-    }
-    void reghorayfecha() {
-
-    }
-
-
-};
 
 class Historial {
 private:
@@ -75,15 +52,19 @@ public:
 
 int main()
 {
-    Tablero tablero;
-    tablero.startb();
-    tablero.imprimir();
     Jugador jugador1("Jugador1", '*');
     Jugador jugador2("Jugador2", '-');
 
-    cout << "\nJugadores:" << endl;
+    cout << "Jugadores:" << endl;
     cout << jugador1.getn() << " - Ficha: " << jugador1.getf() << endl;
     cout << jugador2.getn() << " - Ficha: " << jugador2.getf() << "\n" << endl;
+
+    Partida partida("Jugador1", "Jugador2");
+    partida.initpartida();
+
+    Tablero tablero;
+    tablero.startb();
+    tablero.imprimir();
 
     return 0;
 }
