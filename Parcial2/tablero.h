@@ -12,6 +12,7 @@ public:
     Tablero();
     void startb();
     void imprimir();
+    bool movimiento(int fila, int columna, char ficha);
 
 };
 

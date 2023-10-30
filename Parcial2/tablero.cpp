@@ -32,3 +32,16 @@ void Tablero::imprimir(){
         cout << endl;
     }
 }
+
+
+bool Tablero::movimiento(int fila, int columna, char ficha) {
+    if (fila >= 0 && fila < bsize && columna >= 0 && columna < bsize) {
+        if (tablero[fila][columna] == ' ') {
+            tablero[fila][columna] = ficha;
+            return true;
+        }
+    }
+    return false;
+}
+
+
