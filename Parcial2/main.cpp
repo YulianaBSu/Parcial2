@@ -1,25 +1,10 @@
 #include <iostream>
-#include <ctime>
 #include <tablero.h>
+#include <jugador.h>
+
 using namespace std;
 
 
-class Jugador {
-private:
-    string nombre;
-    char ficha;
-
-public:
-    Jugador();
-
-    string getn() {
-        return nombre;
-    }
-
-    char getf() {
-        return ficha;
-    }
-};
 
 class Partida {
 private:
@@ -93,5 +78,12 @@ int main()
     Tablero tablero;
     tablero.startb();
     tablero.imprimir();
+    Jugador jugador1("Jugador1", '*');
+    Jugador jugador2("Jugador2", '-');
+
+    cout << "\nJugadores:" << endl;
+    cout << jugador1.getn() << " - Ficha: " << jugador1.getf() << endl;
+    cout << jugador2.getn() << " - Ficha: " << jugador2.getf() << "\n" << endl;
+
     return 0;
 }
