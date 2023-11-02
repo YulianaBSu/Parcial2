@@ -14,8 +14,8 @@ Partida::~Partida() {}
 
 void Partida::initpartida(){
 
-    cout << "Partida iniciada!" << endl;
-    cout << reghorayfecha()<< "\n" << endl;
+    cout << "\nPartida iniciada!" << endl;
+    cout << reghorayfecha()<< endl;
 }
 
 void Partida::jganador(string ganador, int fichasganador){
