@@ -37,27 +37,37 @@ void Tablero::imprimir(){
 
 bool Tablero::movimientovalido(int fila, int columna) {
 
-    if (fila <1 && fila > bsize && columna <1 && columna > bsize){
-        cout << "Jugada invalida, posicion fuera del limite" << endl;
+    if (fila < 0 || fila >= bsize || columna < 0 || columna >= bsize) {
+        cout << "Jugada invalida, posicion fuera del límite\n" << endl;
         return false;
     }
-    if (tablero[fila-1][columna-1] !=' '){
-        cout << "Jugada invalida, casilla ocupada" << endl;
+
+    if (tablero[fila][columna] != ' ') {
+        cout << "Jugada invalida, casilla ocupada\n" << endl;
         return false;
     }
 
     return true;
-
 }
+
 bool Tablero::movimiento(int fila, int columna, char ficha) {
-    fila--;
+
+    if (movimientovalido(fila, columna)) {
+            tablero[fila][columna] = ficha;
+            return true;
+        }
+
+        return false;
+    }
+  /*  if (movimientovalido(fila, columna)) {
     if (fila >= 0 && fila < bsize && columna >= 0 && columna < bsize) {
         if (tablero[fila][columna] == ' ') {
             tablero[fila][columna] = ficha;
             return true;
         }
     }
+    }
     return false;
 }
-
+*/
 

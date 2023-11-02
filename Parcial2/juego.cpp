@@ -38,10 +38,10 @@ void Juego::turno() {
     char columna;
     cout << "\nIngrese posicion: Columna (A-H) y fila (1-8). Ej (A1 | C7): ";
     cin >> columna >> fila;
+    fila = fila-1;
     int convcol = columna - 'A';
 
     if (tablero->movimiento(fila, convcol, jugadores[0]->getf())) {
-        tablero->movimiento(fila, convcol, jugadores[0]->getf());
         swap(jugadores[0], jugadores[1]);
         contador++;
     }
