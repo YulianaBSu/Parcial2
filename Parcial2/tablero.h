@@ -15,6 +15,7 @@ public:
     void imprimir();
     bool movimientovalido(int fila, int columna, char ficha);
     bool movimiento(int fila, int columna, char ficha);
+    void giro(int fila, int columna, char ficha);
 
 };
 

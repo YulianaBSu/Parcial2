@@ -142,3 +142,71 @@ bool Tablero::movimiento(int fila, int columna, char ficha) {
     }
 
 
+
+void Tablero::giro(int fila, int columna, char ficha) {
+
+    if (movimientovalido(fila, columna, ficha)){
+    //Verificacion horizontal
+
+    int colizq = columna - 1;
+    int colder = columna + 1;
+
+    while (colizq >= 0 && tablero[fila][colizq] != ' ' && tablero[fila][colizq] != ficha) {
+        tablero[fila][colizq] = ficha;
+        colizq--;
+    }
+
+    while (colder < bsize && tablero[fila][colder] != ' ' && tablero[fila][colder] != ficha) {
+        tablero[fila][colder] = ficha;
+        colder++;
+    }
+
+
+
+    //Verificacion vertical
+
+    int filaarr = fila - 1;
+    int filaab = fila + 1;
+
+    while (filaarr >= 0 && tablero[filaarr][columna] != ' ' && tablero[filaarr][columna] != ficha) {
+        tablero[filaarr][columna] = ficha;
+        filaarr--;
+    }
+
+    while (filaab < bsize && tablero[filaab][columna] != ' ' && tablero[filaab][columna] != ficha) {
+        tablero[filaab][columna] = ficha;
+        filaab++;
+    }
+
+
+    // Verificar diagonal 1
+
+    while (filaarr >= 0 && colizq >= 0 && tablero[filaarr][colizq] != ' ' && tablero[filaarr][colizq] != ficha) {
+        tablero[filaarr][colizq] = ficha;
+        filaarr--;
+        colizq--;
+    }
+
+    while (filaab < bsize && colder < bsize && tablero[filaab][colder] != ' ' && tablero[filaab][colder] != ficha) {
+        tablero[filaab][colder] = ficha;
+        filaab++;
+        colder++;
+    }
+
+
+    // Verificar diagonal 2
+
+    while (filaarr >= 0 && colder < bsize && tablero[filaarr][colder] != ' ' && tablero[filaarr][colder] != ficha) {
+        tablero[filaarr][colder] = ficha;
+        filaarr--;
+        colder++;
+    }
+
+    while (filaab < bsize && colizq >= 0 && tablero[filaab][colizq] != ' ' && tablero[filaab][colizq] != ficha) {
+        tablero[filaab][colizq] = ficha;
+
+        filaab++;
+        colizq--;
+    }
+    }
+    }
