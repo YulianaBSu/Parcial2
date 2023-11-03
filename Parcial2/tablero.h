@@ -13,7 +13,7 @@ public:
     Tablero();
     void startb();
     void imprimir();
-    bool movimientovalido(int fila, int columna);
+    bool movimientovalido(int fila, int columna, char ficha);
     bool movimiento(int fila, int columna, char ficha);
 
 };
