@@ -56,14 +56,14 @@ bool Tablero::movimientovalido(int fila, int columna, char ficha) {
     while (colizq >= 0 && tablero[fila][colizq] != ' ' && tablero[fila][colizq] != ficha) {
         colizq--;
     }
-    if (colizq >= 0 && tablero[fila][colizq] == ficha && columna - colizq > 1) {
+    if (colizq >= 0 && tablero[fila][colizq] == ficha ) {
         return true;
     }
 
     while (colder < bsize && tablero[fila][colder] != ' ' && tablero[fila][colder] != ficha) {
         colder++;
     }
-    if (colder < bsize && tablero[fila][colder] == ficha && colder - columna > 1) {
+    if (colder < bsize && tablero[fila][colder] == ficha ) {
         return true;
     }
 
@@ -77,57 +77,58 @@ bool Tablero::movimientovalido(int fila, int columna, char ficha) {
     while (filaarr >= 0 && tablero[filaarr][columna] != ' ' && tablero[filaarr][columna] != ficha) {
         filaarr--;
     }
-    if (filaarr >= 0 && tablero[filaarr][columna] == ficha && fila - filaarr > 1) {
+    if (filaarr >= 0 && tablero[filaarr][columna] == ficha ) {
         return true;
     }
 
     while (filaab < bsize && tablero[filaab][columna] != ' ' && tablero[filaab][columna] != ficha) {
         filaab++;
     }
-    if (filaab < bsize && tablero[filaab][columna] == ficha && filaab - fila > 1) {
+    if (filaab < bsize && tablero[filaab][columna] == ficha ) {
         return true;
     }
+
+
+
+    int Dfilaarr = fila - 1;
+    int Dfilaab = fila + 1;
+    int Dcolizq = columna - 1;
+    int Dcolder = columna + 1;
 
 
     // Verificar diagonal 1
-
-    while (filaarr >= 0 && colizq >= 0 && tablero[filaarr][colizq] != ' ' && tablero[filaarr][colizq] != ficha) {
-        filaarr--;
-        colizq--;
+    while (Dfilaarr >= 0 && Dcolizq >= 0 && tablero[Dfilaarr][Dcolizq] != ' ' && tablero[Dfilaarr][Dcolizq] != ficha) {
+        Dfilaarr--;
+        Dcolizq--;
     }
-    if (filaarr >= 0 && colizq >= 0 && tablero[filaarr][colizq] == ficha && fila - filaarr > 1 && columna - colizq > 1) {
+    if (Dfilaarr >= 0 && Dcolizq >= 0 && tablero[Dfilaarr][Dcolizq] == ficha ) {
         return true;
     }
-
-    while (filaab < bsize && colder < bsize && tablero[filaab][colder] != ' ' && tablero[filaab][colder] != ficha) {
-        filaab++;
-        colder++;
+    while (Dfilaab < bsize && Dcolder < bsize && tablero[Dfilaab][Dcolder] != ' ' && tablero[Dfilaab][Dcolder] != ficha) {
+        Dfilaab++;
+        Dcolder++;
     }
-    if (filaab < bsize && colder < bsize && tablero[filaab][colder] == ficha && filaab - fila > 1 && colder - columna > 1) {
+    if (Dfilaab < bsize && Dcolder < bsize && tablero[Dfilaab][Dcolder] == ficha ) {
         return true;
     }
-
 
     // Verificar diagonal 2
-
-    while (filaarr >= 0 && colder < bsize && tablero[filaarr][colder] != ' ' && tablero[filaarr][colder] != ficha) {
-        filaarr--;
-        colder++;
+    while (Dfilaarr >= 0 && Dcolder < bsize && tablero[Dfilaarr][Dcolder] != ' ' && tablero[Dfilaarr][Dcolder] != ficha) {
+        Dfilaarr--;
+        Dcolder++;
     }
-    if (filaarr >= 0 && colder < bsize && tablero[filaarr][colder] == ficha && fila - filaarr > 1 && colder - columna > 1) {
+    if (Dfilaarr >= 0 && Dcolder < bsize && tablero[Dfilaarr][Dcolder] == ficha ) {
         return true;
     }
-
-    while (filaab < bsize && colizq >= 0 && tablero[filaab][colizq] != ' ' && tablero[filaab][colizq] != ficha) {
-        filaab++;
-        colizq--;
+    while (Dfilaab < bsize && Dcolizq >= 0 && tablero[Dfilaab][Dcolizq] != ' ' && tablero[Dfilaab][Dcolizq] != ficha) {
+        Dfilaab++;
+        Dcolizq--;
     }
-    if (filaab < bsize && colizq >= 0 && tablero[filaab][colizq] == ficha && filaab - fila > 1 && columna - colizq > 1) {
+    if (Dfilaab < bsize && Dcolizq >= 0 && tablero[Dfilaab][Dcolizq] == ficha ) {
         return true;
     }
-
     return false;
-}
+    }
 
 
 
@@ -145,68 +146,140 @@ bool Tablero::movimiento(int fila, int columna, char ficha) {
 
 void Tablero::giro(int fila, int columna, char ficha) {
 
-    if (movimientovalido(fila, columna, ficha)){
-    //Verificacion horizontal
 
     int colizq = columna - 1;
     int colder = columna + 1;
 
     while (colizq >= 0 && tablero[fila][colizq] != ' ' && tablero[fila][colizq] != ficha) {
-        tablero[fila][colizq] = ficha;
         colizq--;
     }
 
-    while (colder < bsize && tablero[fila][colder] != ' ' && tablero[fila][colder] != ficha) {
-        tablero[fila][colder] = ficha;
-        colder++;
+    if (colizq >= 0 && tablero[fila][colizq] == ficha) {
+        int col = columna - 1;
+        while (col != colizq) {
+            if (tablero[fila][col] != ficha) {
+                tablero[fila][col] = ficha;
+            }
+            col--;
+        }
     }
 
 
+    while (colder < bsize && tablero[fila][colder] != ' ' && tablero[fila][colder] != ficha) {
+        colder++;
+    }
+    if (colder < bsize && tablero[fila][colder] == ficha) {
+        int col = columna + 1;
+        while (col != colder) {
+            if (tablero[fila][col] != ficha) {
+                tablero[fila][col] = ficha;
+            }
+            col++;
+        }
+    }
 
-    //Verificacion vertical
 
     int filaarr = fila - 1;
     int filaab = fila + 1;
 
     while (filaarr >= 0 && tablero[filaarr][columna] != ' ' && tablero[filaarr][columna] != ficha) {
-        tablero[filaarr][columna] = ficha;
         filaarr--;
     }
+    if (filaarr >= 0 && tablero[filaarr][columna] == ficha) {
+        int fil = fila - 1;
+        while (fil != filaarr) {
+            if (tablero[fil][columna] != ficha) {
+                tablero[fil][columna] = ficha;
+            }
+            fil--;
+        }
+    }
+
 
     while (filaab < bsize && tablero[filaab][columna] != ' ' && tablero[filaab][columna] != ficha) {
-        tablero[filaab][columna] = ficha;
+        //tablero[filaab][columna] = ficha;
         filaab++;
     }
-
-
-    // Verificar diagonal 1
-
-    while (filaarr >= 0 && colizq >= 0 && tablero[filaarr][colizq] != ' ' && tablero[filaarr][colizq] != ficha) {
-        tablero[filaarr][colizq] = ficha;
-        filaarr--;
-        colizq--;
-    }
-
-    while (filaab < bsize && colder < bsize && tablero[filaab][colder] != ' ' && tablero[filaab][colder] != ficha) {
-        tablero[filaab][colder] = ficha;
-        filaab++;
-        colder++;
+    if (filaab < bsize && tablero[filaab][columna] == ficha) {
+        int fil = fila + 1;
+        while (fil != filaab) {
+            if (tablero[fil][columna] != ficha) {
+                tablero[fil][columna] = ficha;
+            }
+            fil++;
+        }
     }
 
 
-    // Verificar diagonal 2
+    //Diagonales
+    int Dfilaarr = fila - 1;
+    int Dfilaab = fila + 1;
+    int Dcolizq = columna - 1;
+    int Dcolder = columna + 1;
 
-    while (filaarr >= 0 && colder < bsize && tablero[filaarr][colder] != ' ' && tablero[filaarr][colder] != ficha) {
-        tablero[filaarr][colder] = ficha;
-        filaarr--;
-        colder++;
+    while (Dfilaarr >= 0 && Dcolizq >= 0 && tablero[Dfilaarr][Dcolizq] != ' ' && tablero[Dfilaarr][Dcolizq] != ficha) {
+        Dfilaarr--;
+        Dcolizq--;
+    }
+    if (Dfilaarr >= 0 && Dcolizq >= 0 && tablero[Dfilaarr][Dcolizq] == ficha) {
+        int Dfila = fila - 1;
+        int Dcol = columna - 1;
+        while (Dfila != Dfilaarr && Dcol != Dcolizq) {
+            if (tablero[Dfila][Dcol] != ficha) {
+                tablero[Dfila][Dcol] = ficha;
+            }
+            Dfila--;
+            Dcol--;
+        }
     }
 
-    while (filaab < bsize && colizq >= 0 && tablero[filaab][colizq] != ' ' && tablero[filaab][colizq] != ficha) {
-        tablero[filaab][colizq] = ficha;
+    while (Dfilaab < bsize && Dcolder < bsize && tablero[Dfilaab][Dcolder] != ' ' && tablero[Dfilaab][Dcolder] != ficha) {
+        Dfilaab++;
+        Dcolder++;
+    }
+    if (Dfilaab < bsize && Dcolder < bsize && tablero[Dfilaab][Dcolder] == ficha) {
+        int Dfila = fila + 1;
+        int Dcol = columna + 1;
+        while (Dfila != Dfilaab && Dcol != Dcolder) {
+            if (tablero[Dfila][Dcol] != ficha) {
+                tablero[Dfila][Dcol] = ficha;
+            }
+            Dfila++;
+            Dcol++;
+        }
+    }
 
-        filaab++;
-        colizq--;
+
+    while (Dfilaarr >= 0 && Dcolder < bsize && tablero[Dfilaarr][Dcolder] != ' ' && tablero[Dfilaarr][Dcolder] != ficha) {
+        Dfilaarr--;
+        Dcolder++;
     }
+    if (Dfilaarr >= 0 && Dcolder < bsize && tablero[Dfilaarr][Dcolder] == ficha) {
+        int Dfila = fila - 1;
+        int Dcol = columna + 1;
+        while (Dfila != Dfilaarr && Dcol != Dcolder) {
+            if (tablero[Dfila][Dcol] != ficha) {
+                tablero[Dfila][Dcol] = ficha;
+            }
+            Dfila--;
+            Dcol++;
+        }
     }
+
+    while (Dfilaab < bsize && Dcolizq >= 0 && tablero[Dfilaab][Dcolizq] != ' ' && tablero[Dfilaab][Dcolizq] != ficha) {
+        Dfilaab++;
+        Dcolizq--;
     }
+
+    if (Dfilaab < bsize && Dcolizq >= 0 && tablero[Dfilaab][Dcolizq] == ficha) {
+        int Dfila = fila + 1;
+        int Dcol = columna - 1;
+        while (Dfila != Dfilaab && Dcol != Dcolizq) {
+            if (tablero[Dfila][Dcol] != ficha) {
+                tablero[Dfila][Dcol] = ficha;
+            }
+            Dfila++;
+            Dcol--;
+        }
+    }
+ }

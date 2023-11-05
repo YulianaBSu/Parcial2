@@ -21,8 +21,8 @@ Juego::~Juego() {
 
 void Juego::start(){
 
-    jugadores[0] = new Jugador("Jugador1", '*');
-    jugadores[1] = new Jugador("Jugador2", '-');
+    jugadores[0] = new Jugador("Jugador1", '-');
+    jugadores[1] = new Jugador("Jugador2", '*');
 
     cout << "  ************ OTHELLO ************" << endl;
     tablero->startb();
@@ -42,6 +42,7 @@ void Juego::turno() {
     int convcol = columna - 'A';
 
     if (tablero->movimiento(fila, convcol, jugadores[0]->getf())) {
+        tablero->giro(fila, convcol, jugadores[0]->getf());
         swap(jugadores[0], jugadores[1]);
         contador++;
     }
