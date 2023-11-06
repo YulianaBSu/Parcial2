@@ -41,7 +41,7 @@ int main()
     }
 
 
-    cout << "\nJuego terminado\nSaliendo..." << endl;
+    cout << "\nJuego terminado\n" << endl;
 
 
     return 0;
