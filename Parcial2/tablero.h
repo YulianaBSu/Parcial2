@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-const int bsize = 8;
+const int bsize = 4;
 
 class Tablero
 {
@@ -19,6 +19,7 @@ public:
     void imprimir();
     bool movimientovalido(int fila, int columna, char ficha);
     bool movimiento(int fila, int columna, char ficha);
+    bool ifmovalid(char ficha);
     void giro(int fila, int columna, char ficha);
     void cfichas(char ficha1, char ficha2);
     string ganadorp(string jug1, string jug2);

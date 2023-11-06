@@ -10,18 +10,19 @@ int main()
 {
 
     Juego juego;
+    Partida partida;
 
     juego.start();
     juego.partidaj();
-    while (juego.finpartida() < (bsize * bsize - 4)) {
+    while (!juego.findejuego()) {
         juego.turno();
 
         cout << "\nCasillas disponibles: " << (bsize * bsize - 4) - juego.finpartida() << endl;
     }
+
+    juego.resfinal();
     juego.finpartida();
-    Partida partida;
     partida.resultados();
-    cout << "\nJuego terminado\nSaliendo..."<< endl;
 
     return 0;
 }

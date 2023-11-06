@@ -18,7 +18,9 @@ public:
     void start();
     void partidaj();
     void turno();
+    void resfinal();
     int finpartida();
+    bool findejuego();
 
 };
 

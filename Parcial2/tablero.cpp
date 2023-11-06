@@ -35,12 +35,12 @@ void Tablero::imprimir(){
 bool Tablero::movimientovalido(int fila, int columna, char ficha) {
 
     if (fila < 0 || fila >= bsize || columna < 0 || columna >= bsize) {
-        cout << "Jugada invalida, posicion fuera del limite\n" << endl;
+        //cout << "Jugada invalida, posicion fuera del limite\n" << endl;
         return false;
     }
 
     if (tablero[fila][columna] != ' ') {
-        cout << "Jugada invalida, casilla ocupada\n" << endl;
+        //cout << "Jugada invalida, casilla ocupada\n" << endl;
         return false;
     }
 
@@ -53,14 +53,14 @@ bool Tablero::movimientovalido(int fila, int columna, char ficha) {
     while (colizq >= 0 && tablero[fila][colizq] != ' ' && tablero[fila][colizq] != ficha) {
         colizq--;
     }
-    if (colizq >= 0 && tablero[fila][colizq] == ficha ) {
+    if (colizq >= 0 && tablero[fila][colizq] == ficha && columna - colizq > 1) {
         return true;
     }
 
     while (colder < bsize && tablero[fila][colder] != ' ' && tablero[fila][colder] != ficha) {
         colder++;
     }
-    if (colder < bsize && tablero[fila][colder] == ficha ) {
+    if (colder < bsize && tablero[fila][colder] == ficha && colder - columna > 1 ) {
         return true;
     }
 
@@ -74,14 +74,14 @@ bool Tablero::movimientovalido(int fila, int columna, char ficha) {
     while (filaarr >= 0 && tablero[filaarr][columna] != ' ' && tablero[filaarr][columna] != ficha) {
         filaarr--;
     }
-    if (filaarr >= 0 && tablero[filaarr][columna] == ficha ) {
+    if (filaarr >= 0 && tablero[filaarr][columna] == ficha && fila - filaarr > 1) {
         return true;
     }
 
     while (filaab < bsize && tablero[filaab][columna] != ' ' && tablero[filaab][columna] != ficha) {
         filaab++;
     }
-    if (filaab < bsize && tablero[filaab][columna] == ficha ) {
+    if (filaab < bsize && tablero[filaab][columna] == ficha && filaab - fila > 1) {
         return true;
     }
 
@@ -98,14 +98,14 @@ bool Tablero::movimientovalido(int fila, int columna, char ficha) {
         Dfilaarr--;
         Dcolizq--;
     }
-    if (Dfilaarr >= 0 && Dcolizq >= 0 && tablero[Dfilaarr][Dcolizq] == ficha ) {
+    if (Dfilaarr >= 0 && Dcolizq >= 0 && tablero[Dfilaarr][Dcolizq] == ficha && fila - Dfilaarr > 1 && columna - Dcolizq > 1) {
         return true;
     }
     while (Dfilaab < bsize && Dcolder < bsize && tablero[Dfilaab][Dcolder] != ' ' && tablero[Dfilaab][Dcolder] != ficha) {
         Dfilaab++;
         Dcolder++;
     }
-    if (Dfilaab < bsize && Dcolder < bsize && tablero[Dfilaab][Dcolder] == ficha ) {
+    if (Dfilaab < bsize && Dcolder < bsize && tablero[Dfilaab][Dcolder] == ficha && Dfilaab - fila > 1 && Dcolder - columna > 1) {
         return true;
     }
 
@@ -121,24 +121,31 @@ bool Tablero::movimientovalido(int fila, int columna, char ficha) {
         Dsfilaarr--;
         Dscolder++;
     }
-    if (Dsfilaarr >= 0 && Dscolder < bsize && tablero[Dsfilaarr][Dscolder] == ficha ) {
+    if (Dsfilaarr >= 0 && Dscolder < bsize && tablero[Dsfilaarr][Dscolder] == ficha && fila - Dsfilaarr > 1 && Dscolder - columna > 1) {
         return true;
     }
     while (Dsfilaab < bsize && Dscolizq >= 0 && tablero[Dsfilaab][Dscolizq] != ' ' && tablero[Dsfilaab][Dscolizq] != ficha) {
         Dsfilaab++;
         Dscolizq--;
     }
-    if (Dsfilaab < bsize && Dscolizq >= 0 && tablero[Dsfilaab][Dscolizq] == ficha ) {
+    if (Dsfilaab < bsize && Dscolizq >= 0 && tablero[Dsfilaab][Dscolizq] == ficha && Dsfilaab - fila > 1 && columna - Dscolizq > 1) {
         return true;
     }
-
-
 
     return false;
     }
 
 
-
+bool Tablero::ifmovalid(char ficha) {
+    for (int fila = 0; fila < bsize; ++fila) {
+        for (int columna = 0; columna < bsize; ++columna) {
+            if (movimientovalido(fila, columna, ficha)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
 
 
 bool Tablero::movimiento(int fila, int columna, char ficha) {
