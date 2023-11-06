@@ -2,15 +2,20 @@
 #include <iostream>
 #include <ctime>
 #include <string>
+#include "juego.h"
 
 using namespace std;
-Partida::Partida(Jugador* jugador1, Jugador* jugador2)
+Partida::Partida()
 {
-    this->jugador1 = jugador1;
-    this->jugador2 = jugador2;
+    juego = new Juego();
+
 }
 
-Partida::~Partida() {}
+Partida::~Partida() {
+
+    delete juego;
+
+}
 
 void Partida::initpartida(){
 
@@ -18,10 +23,6 @@ void Partida::initpartida(){
     cout << reghorayfecha()<< endl;
 }
 
-void Partida::jganador(string ganador, int fichasganador){
-    this->ganador = ganador;
-    this->fichasganador = fichasganador;
-}
 
 string Partida::reghorayfecha(){
     time_t tiempo = time(nullptr);
@@ -36,10 +37,12 @@ string Partida::reghorayfecha(){
     return fechayhora;
 }
 
+
+
 string Partida::resultados(){
     string resultado;
-    resultado += "\nJugadores: " + jugador1->getn() + " - " + jugador2->getn() + "\n" +
+    resultado += "\nJugadores: " + juego->jugadores[0]->getn() + " - " + juego->jugadores[1]->getn() + "\n" +
             "Fecha y hora" + reghorayfecha() + "\n" +
-            "Ganador: ";
+            "Ganador: " + juego->jugadorganador;
     return resultado;
 }

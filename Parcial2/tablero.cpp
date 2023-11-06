@@ -3,24 +3,20 @@
 
 using namespace std;
 
-Tablero::Tablero()
-{
-    startb();
-}
+Tablero::Tablero(){}
 
-void Tablero::startb(){
+void Tablero::startb(char ficha1, char ficha2){
     for (int i = 0; i < bsize; i++) {
         for (int j = 0; j < bsize; j++) {
             tablero[i][j] = ' ';
         }
     }
-    tablero[3][3] = '*';
-    tablero[3][4] = '-';
-    tablero[4][3] = '-';
-    tablero[4][4] = '*';
-
-
+    tablero[bsize/2 - 1][bsize/2 -1] = ficha2;
+    tablero[bsize/2 - 1][bsize/2] = ficha1;
+    tablero[bsize/2][bsize/2 - 1] = ficha1;
+    tablero[bsize/2][bsize/2] = ficha2;
 }
+
 
 void Tablero::imprimir(){
 
@@ -34,6 +30,7 @@ void Tablero::imprimir(){
         cout << endl << "  +---+---+---+---+---+---+---+---+" << endl;
     }
 }
+
 
 bool Tablero::movimientovalido(int fila, int columna, char ficha) {
 
@@ -112,23 +109,35 @@ bool Tablero::movimientovalido(int fila, int columna, char ficha) {
         return true;
     }
 
+
+    int Dsfilaarr = fila - 1;
+    int Dsfilaab = fila + 1;
+    int Dscolizq = columna - 1;
+    int Dscolder = columna + 1;
+
+
     // Verificar diagonal 2
-    while (Dfilaarr >= 0 && Dcolder < bsize && tablero[Dfilaarr][Dcolder] != ' ' && tablero[Dfilaarr][Dcolder] != ficha) {
-        Dfilaarr--;
-        Dcolder++;
+    while (Dsfilaarr >= 0 && Dscolder < bsize && tablero[Dsfilaarr][Dscolder] != ' ' && tablero[Dsfilaarr][Dscolder] != ficha) {
+        Dsfilaarr--;
+        Dscolder++;
     }
-    if (Dfilaarr >= 0 && Dcolder < bsize && tablero[Dfilaarr][Dcolder] == ficha ) {
+    if (Dsfilaarr >= 0 && Dscolder < bsize && tablero[Dsfilaarr][Dscolder] == ficha ) {
         return true;
     }
-    while (Dfilaab < bsize && Dcolizq >= 0 && tablero[Dfilaab][Dcolizq] != ' ' && tablero[Dfilaab][Dcolizq] != ficha) {
-        Dfilaab++;
-        Dcolizq--;
+    while (Dsfilaab < bsize && Dscolizq >= 0 && tablero[Dsfilaab][Dscolizq] != ' ' && tablero[Dsfilaab][Dscolizq] != ficha) {
+        Dsfilaab++;
+        Dscolizq--;
     }
-    if (Dfilaab < bsize && Dcolizq >= 0 && tablero[Dfilaab][Dcolizq] == ficha ) {
+    if (Dsfilaab < bsize && Dscolizq >= 0 && tablero[Dsfilaab][Dscolizq] == ficha ) {
         return true;
     }
+
+
+
     return false;
     }
+
+
 
 
 
@@ -143,9 +152,7 @@ bool Tablero::movimiento(int fila, int columna, char ficha) {
     }
 
 
-
 void Tablero::giro(int fila, int columna, char ficha) {
-
 
     int colizq = columna - 1;
     int colder = columna + 1;
@@ -197,7 +204,6 @@ void Tablero::giro(int fila, int columna, char ficha) {
 
 
     while (filaab < bsize && tablero[filaab][columna] != ' ' && tablero[filaab][columna] != ficha) {
-        //tablero[filaab][columna] = ficha;
         filaab++;
     }
     if (filaab < bsize && tablero[filaab][columna] == ficha) {
@@ -209,7 +215,6 @@ void Tablero::giro(int fila, int columna, char ficha) {
             fil++;
         }
     }
-
 
     //Diagonales
     int Dfilaarr = fila - 1;
@@ -249,15 +254,20 @@ void Tablero::giro(int fila, int columna, char ficha) {
         }
     }
 
+    int Dsfilaarr = fila - 1;
+    int Dsfilaab = fila + 1;
+    int Dscolizq = columna - 1;
+    int Dscolder = columna + 1;
 
-    while (Dfilaarr >= 0 && Dcolder < bsize && tablero[Dfilaarr][Dcolder] != ' ' && tablero[Dfilaarr][Dcolder] != ficha) {
-        Dfilaarr--;
-        Dcolder++;
+
+    while (Dsfilaarr >= 0 && Dscolder < bsize && tablero[Dsfilaarr][Dscolder] != ' ' && tablero[Dsfilaarr][Dscolder] != ficha) {
+        Dsfilaarr--;
+        Dscolder++;
     }
-    if (Dfilaarr >= 0 && Dcolder < bsize && tablero[Dfilaarr][Dcolder] == ficha) {
+    if (Dsfilaarr >= 0 && Dscolder < bsize && tablero[Dsfilaarr][Dscolder] == ficha) {
         int Dfila = fila - 1;
         int Dcol = columna + 1;
-        while (Dfila != Dfilaarr && Dcol != Dcolder) {
+        while (Dfila != Dsfilaarr && Dcol != Dscolder) {
             if (tablero[Dfila][Dcol] != ficha) {
                 tablero[Dfila][Dcol] = ficha;
             }
@@ -266,15 +276,15 @@ void Tablero::giro(int fila, int columna, char ficha) {
         }
     }
 
-    while (Dfilaab < bsize && Dcolizq >= 0 && tablero[Dfilaab][Dcolizq] != ' ' && tablero[Dfilaab][Dcolizq] != ficha) {
-        Dfilaab++;
-        Dcolizq--;
+    while (Dsfilaab < bsize && Dscolizq >= 0 && tablero[Dsfilaab][Dscolizq] != ' ' && tablero[Dsfilaab][Dscolizq] != ficha) {
+        Dsfilaab++;
+        Dscolizq--;
     }
 
-    if (Dfilaab < bsize && Dcolizq >= 0 && tablero[Dfilaab][Dcolizq] == ficha) {
+    if (Dsfilaab < bsize && Dscolizq >= 0 && tablero[Dsfilaab][Dscolizq] == ficha) {
         int Dfila = fila + 1;
         int Dcol = columna - 1;
-        while (Dfila != Dfilaab && Dcol != Dcolizq) {
+        while (Dfila != Dsfilaab && Dcol != Dscolizq) {
             if (tablero[Dfila][Dcol] != ficha) {
                 tablero[Dfila][Dcol] = ficha;
             }
@@ -282,4 +292,39 @@ void Tablero::giro(int fila, int columna, char ficha) {
             Dcol--;
         }
     }
- }
+  }
+
+
+
+
+void Tablero::cfichas(char ficha1, char ficha2) {
+    fichasj1 = 0;
+    fichasj2 = 0;
+
+    for (int fila = 0; fila < bsize; ++fila) {
+        for (int columna = 0; columna < bsize; ++columna) {
+            if (tablero[fila][columna] == ficha1) {
+                fichasj1++;
+            }
+            else if (tablero[fila][columna] == ficha2) {
+                fichasj2++;
+            }
+        }
+    }
+
+    cout << "\nFichas:"<<endl;
+    cout << "'" << ficha1 <<"' -> " << fichasj1 <<  "         '"<< ficha2 << "' -> " << fichasj2 << endl;
+}
+
+string Tablero::ganadorp(string jug1, string jug2){
+
+    if (fichasj1 > fichasj2) {
+        return "Ganador: " + jug1 + " Fichas: " + to_string(fichasj1) ;
+        }
+    else if (fichasj2 > fichasj1) {
+        return "Ganador: " + jug2 + " Fichas: " + to_string(fichasj2);
+        }
+    else {
+        return "Empate, ambos jugadores tienen " + to_string(fichasj1) + " fichas.";
+        }
+}

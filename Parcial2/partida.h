@@ -1,24 +1,23 @@
 #ifndef PARTIDA_H
 #define PARTIDA_H
-#include "jugador.h"
+#include "juego.h"
 #include <string>
 using namespace std;
 
 class Partida
 {
 private:
-    Jugador* jugador1;
-    Jugador* jugador2;
-    string ganador;
-    int fichasganador;
+    Juego* juego;
     string fechayhora;
+
+
 public:
-    Partida(Jugador* jugador1, Jugador* jugador2);
+    Partida();
     ~Partida();
     void initpartida();
     string reghorayfecha();
-    void jganador(string ganador, int fichasganador);
     string resultados();
+    void setganador(string ganador);
 };
 
 #endif // PARTIDA_H

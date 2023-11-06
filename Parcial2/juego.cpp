@@ -24,10 +24,15 @@ void Juego::start(){
     jugadores[0] = new Jugador("Jugador1", '-');
     jugadores[1] = new Jugador("Jugador2", '*');
 
+}
+
+
+void Juego::partidaj() {
     cout << "  ************ OTHELLO ************" << endl;
-    tablero->startb();
+    tablero->startb(jugadores[0]->getf(), jugadores[1]->getf());
 
 }
+
 void Juego::turno() {
 
     tablero->imprimir();
@@ -43,14 +48,20 @@ void Juego::turno() {
 
     if (tablero->movimiento(fila, convcol, jugadores[0]->getf())) {
         tablero->giro(fila, convcol, jugadores[0]->getf());
+        tablero->cfichas(jugadores[0]->getf(), jugadores[1]->getf());
         swap(jugadores[0], jugadores[1]);
         contador++;
     }
+
     else {
         cout << "Movimiento no valido. Intente nuevamente." << endl;
     }
+
+
+
 }
 int Juego::finpartida() {
+    string jugadorganador = tablero->ganadorp(jugadores[0]->getn(), jugadores[1]->getn());
     return contador;
 }
 
