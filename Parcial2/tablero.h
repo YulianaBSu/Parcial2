@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-const int bsize = 4;
+const int bsize = 8;
 
 class Tablero
 {

@@ -10,7 +10,6 @@ int main()
 {
 
     Juego juego;
-    Partida partida;
 
     juego.start();
     juego.partidaj();
@@ -22,7 +21,12 @@ int main()
 
     juego.resfinal();
     juego.finpartida();
-    partida.resultados();
+
+    string resultado = juego.gpartida()->gresultadop();
+
+    cout << resultado << endl;
+    cout << "\nJuego terminado\nSaliendo..." << endl;
+
 
     return 0;
 }

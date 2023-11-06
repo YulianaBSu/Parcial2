@@ -35,12 +35,10 @@ void Tablero::imprimir(){
 bool Tablero::movimientovalido(int fila, int columna, char ficha) {
 
     if (fila < 0 || fila >= bsize || columna < 0 || columna >= bsize) {
-        //cout << "Jugada invalida, posicion fuera del limite\n" << endl;
         return false;
     }
 
     if (tablero[fila][columna] != ' ') {
-        //cout << "Jugada invalida, casilla ocupada\n" << endl;
         return false;
     }
 
@@ -326,12 +324,12 @@ void Tablero::cfichas(char ficha1, char ficha2) {
 string Tablero::ganadorp(string jug1, string jug2){
 
     if (fichasj1 > fichasj2) {
-        return "Ganador: " + jug1 + " Fichas: " + to_string(fichasj1) ;
+        return "Jugadores: " + jug1 + " y " + jug2 + ", Ganador: " + jug2 + ", Fichas: " + to_string(fichasj2);
         }
     else if (fichasj2 > fichasj1) {
-        return "Ganador: " + jug2 + " Fichas: " + to_string(fichasj2);
+        return "Jugadores: " + jug1 + " y " + jug2 + ", Ganador: " + jug2 + ", Fichas: " + to_string(fichasj2);
         }
     else {
-        return "Empate, ambos jugadores tienen " + to_string(fichasj1) + " fichas.";
+        return "Jugadores: " + jug1 + " y " + jug2 + ", Resultado: Empate, ambos jugadores tienen " + to_string(fichasj1) + " fichas.";
         }
 }

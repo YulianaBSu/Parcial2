@@ -2,15 +2,16 @@
 #define JUEGO_H
 #include "jugador.h"
 #include "tablero.h"
+#include "partida.h"
 
 class Juego
 {
 private:
     Jugador* jugadores[2];
     Tablero* tablero;
+    Partida* partida;
     int contador=0;
-    string jugadorganador;
-    friend class Partida;
+    string resultadospartida;
 
 public:
     Juego();
@@ -21,7 +22,9 @@ public:
     void resfinal();
     int finpartida();
     bool findejuego();
-
+    Partida* gpartida() {
+        return partida;
+    }
 };
 
 #endif // JUEGO_H

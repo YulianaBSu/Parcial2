@@ -8,6 +8,7 @@ Juego::Juego()
     jugadores[0] = nullptr;
     jugadores[1] = nullptr;
     tablero = new Tablero();
+    partida = new Partida();
 
 }
 
@@ -16,6 +17,7 @@ Juego::~Juego() {
     delete jugadores[0];
     delete jugadores[1];
     delete tablero;
+    delete partida;
 
 }
 
@@ -79,7 +81,9 @@ bool Juego::findejuego() {
 }
 
 int Juego::finpartida() {
-    string jugadorganador = tablero->ganadorp(jugadores[0]->getn(), jugadores[1]->getn());
+    string resultadospartida = "Fecha y hora :" + partida->reghorayfecha() + tablero->ganadorp(jugadores[0]->getn(), jugadores[1]->getn());
+    partida->sresultadop(resultadospartida);
+
     return contador;
 }
 

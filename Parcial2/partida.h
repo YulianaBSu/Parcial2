@@ -1,14 +1,13 @@
 #ifndef PARTIDA_H
 #define PARTIDA_H
-#include "juego.h"
 #include <string>
 using namespace std;
 
 class Partida
 {
 private:
-    Juego* juego;
     string fechayhora;
+    string resultadoPartida;
 
 
 public:
@@ -16,7 +15,8 @@ public:
     ~Partida();
     void initpartida();
     string reghorayfecha();
-    string resultados();
+    void sresultadop(string resultadoPartida);
+    string gresultadop();
     void setganador(string ganador);
 };
 
