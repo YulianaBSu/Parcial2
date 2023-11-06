@@ -333,3 +333,4 @@ string Tablero::ganadorp(string jug1, string jug2){
         return "Jugadores: " + jug1 + " y " + jug2 + ", Resultado: Empate, ambos jugadores tienen " + to_string(fichasj1) + " fichas.";
         }
 }
+

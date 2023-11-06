@@ -1,19 +1,17 @@
 #ifndef HISTORIAL_H
 #define HISTORIAL_H
-#include "partida.h"
+#include <string>
+using namespace std;
 
 class Historial
 {
 private:
-    Partida* partidasn;
-    int partidas;
 
 public:
     Historial();
-    void agregar();
-    void guardar();
-    void cargar();
+    void guardar(const string& resultado);
     void imprimir();
+
 
 };
 

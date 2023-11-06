@@ -1,8 +1,8 @@
 #include "partida.h"
+#include "historial.h"
 #include <iostream>
 #include <ctime>
 #include <string>
-#include "juego.h"
 
 using namespace std;
 Partida::Partida()
@@ -38,9 +38,12 @@ string Partida::reghorayfecha(){
 
 void Partida::sresultadop(string resultado) {
     this->resultadoPartida = resultado;
+    historial.guardar(resultadoPartida);
 }
 
 string Partida::gresultadop() {
     return resultadoPartida;
 }
+
+
 

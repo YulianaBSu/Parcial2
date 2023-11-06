@@ -81,8 +81,9 @@ bool Juego::findejuego() {
 }
 
 int Juego::finpartida() {
-    string resultadospartida = "Fecha y hora :" + partida->reghorayfecha() + tablero->ganadorp(jugadores[0]->getn(), jugadores[1]->getn());
+    string resultadospartida = "Fecha y hora: " + partida->reghorayfecha() + tablero->ganadorp(jugadores[0]->getn(), jugadores[1]->getn()) + "\n";
     partida->sresultadop(resultadospartida);
+
 
     return contador;
 }

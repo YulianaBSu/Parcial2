@@ -3,6 +3,7 @@
 #include <jugador.h>
 #include <partida.h>
 #include <juego.h>
+#include <historial.h>
 
 using namespace std;
 
@@ -23,8 +24,23 @@ int main()
     juego.finpartida();
 
     string resultado = juego.gpartida()->gresultadop();
-
     cout << resultado << endl;
+
+    Historial historial;
+
+    string opcion;
+    cout << "Desea ver el historial de partidas? (s/n): ";
+    cin >> opcion;
+
+    if (opcion == "s" || opcion == "S") {
+        cout << "\nHistorial de partidas\n" << endl;
+        historial.imprimir();
+    }
+    else {
+        return 0;
+    }
+
+
     cout << "\nJuego terminado\nSaliendo..." << endl;
 
 
