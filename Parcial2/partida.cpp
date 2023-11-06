@@ -1,19 +1,12 @@
 #include "partida.h"
-#include "historial.h"
 #include <iostream>
 #include <ctime>
 #include <string>
 
 using namespace std;
 Partida::Partida()
-{
+{}
 
-}
-
-Partida::~Partida() {
-
-
-}
 
 void Partida::initpartida(){
 

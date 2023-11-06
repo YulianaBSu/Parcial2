@@ -22,9 +22,11 @@ int main()
 
     juego.resfinal();
     juego.finpartida();
+    juego.respartida();
 
     string resultado = juego.gpartida()->gresultadop();
     cout << resultado << endl;
+
 
     Historial historial;
 

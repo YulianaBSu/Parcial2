@@ -1,5 +1,4 @@
 #include "juego.h"
-#include "jugador.h"
 #include <iostream>
 using namespace std;
 
@@ -81,10 +80,12 @@ bool Juego::findejuego() {
 }
 
 int Juego::finpartida() {
+    return contador;
+}
+
+void Juego::respartida(){
     string resultadospartida = "Fecha y hora: " + partida->reghorayfecha() + tablero->ganadorp(jugadores[0]->getn(), jugadores[1]->getn()) + "\n";
     partida->sresultadop(resultadospartida);
 
-
-    return contador;
 }
 

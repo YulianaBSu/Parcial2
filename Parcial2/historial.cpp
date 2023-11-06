@@ -4,9 +4,7 @@
 using namespace std;
 
 Historial::Historial()
-{
-
-}
+{}
 void Historial::guardar(const string& resultado) {
     ofstream archivo("historial.txt", ios::app);
     if (archivo.is_open()) {

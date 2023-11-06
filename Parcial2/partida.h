@@ -15,7 +15,6 @@ private:
 
 public:
     Partida();
-    ~Partida();
     void initpartida();
     string reghorayfecha();
     void sresultadop(string resultadoPartida);

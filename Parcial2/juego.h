@@ -26,6 +26,7 @@ public:
     Partida* gpartida() {
         return partida;
     }
+    void respartida();
 };
 
 #endif // JUEGO_H
