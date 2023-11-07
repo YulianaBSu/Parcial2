@@ -1,30 +1,6 @@
-Fecha y hora: 2023/11/06 16:04:05
-Jugadores: Jugador1 y Jugador2, Resultado: Empate, ambos jugadores tienen 0 fichas.
+Fecha y hora: 2023/11/06 22:37:04
+Jugadores: Jugador1 y Jugador2, Ganador: Jugador1, Fichas: 39
 
-Fecha y hora: 2023/11/06 16:04:08
-Jugadores: Jugador1 y Jugador2, Resultado: Empate, ambos jugadores tienen 0 fichas.
-
-Fecha y hora: 2023/11/06 16:04:12
-Jugadores: Jugador1 y Jugador2, Resultado: Empate, ambos jugadores tienen 0 fichas.
-
-Fecha y hora: 2023/11/06 16:04:23
-Jugadores: Jugador1 y Jugador2, Resultado: Empate, ambos jugadores tienen 0 fichas.
-
-Fecha y hora: 2023/11/06 16:04:27
-Jugadores: Jugador1 y Jugador2, Resultado: Empate, ambos jugadores tienen 0 fichas.
-
-Fecha y hora: 2023/11/06 16:11:18
-Jugadores: Jugador1 y Jugador2, Resultado: Empate, ambos jugadores tienen 0 fichas.
-
-Fecha y hora: 2023/11/06 16:12:35
-Jugadores: Jugador1 y Jugador2, Resultado: Empate, ambos jugadores tienen 0 fichas.
-
-Fecha y hora: 2023/11/06 16:13:01
-Jugadores: Jugador1 y Jugador2, Resultado: Empate, ambos jugadores tienen 0 fichas.
-
-Fecha y hora: 2023/11/06 16:15:28
-Jugadores: Jugador1 y Jugador2, Resultado: Empate, ambos jugadores tienen 0 fichas.
-
-Fecha y hora: 2023/11/06 16:18:37
-Jugadores: Jugador1 y Jugador2, Resultado: Empate, ambos jugadores tienen 0 fichas.
+Fecha y hora: 2023/11/06 22:45:20
+Jugadores: Jugador2 y Jugador1, Ganador: Jugador1, Fichas: 45
 
