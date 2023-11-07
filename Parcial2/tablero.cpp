@@ -324,7 +324,7 @@ void Tablero::cfichas(char ficha1, char ficha2) {
 string Tablero::ganadorp(string jug1, string jug2){
 
     if (fichasj1 > fichasj2) {
-        return "Jugadores: " + jug1 + " y " + jug2 + ", Ganador: " + jug2 + ", Fichas: " + to_string(fichasj2);
+        return "Jugadores: " + jug1 + " y " + jug2 + ", Ganador: " + jug1 + ", Fichas: " + to_string(fichasj1);
         }
     else if (fichasj2 > fichasj1) {
         return "Jugadores: " + jug1 + " y " + jug2 + ", Ganador: " + jug2 + ", Fichas: " + to_string(fichasj2);
